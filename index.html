@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PARADISE ROLEPLAY | SA-MP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+  margin:0;
+  font-family: Arial;
+  background:linear-gradient(to bottom,#cfe7ff,#e8f4ff);
+  overflow-x:hidden;
+}
+
+/* Header */
+.header{
+  background:#4aa3ff;
+  padding:35px;
+  text-align:center;
+  color:white;
+  animation: slideDown 1s ease;
+  box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+.header h1{
+  animation: glow 2s infinite alternate;
+}
+
+/* Main Box */
+.container{
+  width:90%;
+  max-width:1000px;
+  margin:auto;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 0 25px rgba(0,0,0,.1);
+  margin-top:-40px;
+  animation: fadeUp 1.3s ease;
+}
+
+/* Sections */
+.section{
+  margin-bottom:30px;
+  padding:15px;
+  border-radius:10px;
+  background:#f9fcff;
+  box-shadow:0 0 12px rgba(0,0,0,.05);
+  transition:0.4s;
+}
+.section:hover{
+  transform:scale(1.01);
+}
+
+/* Headings */
+h2{
+  color:#1681ff;
+  position:relative;
+}
+h2::after{
+  content:"";
+  width:60px;
+  height:4px;
+  background:#4aa3ff;
+  display:block;
+  border-radius:20px;
+  margin-top:5px;
+}
+
+/* Buttons */
+.link-btn, button{
+  padding:10px 20px;
+  background:#1681ff;
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+  transition:.3s;
+  animation:pulse 2s infinite;
+}
+.link-btn:hover, button:hover{
+  background:#0b5fc0;
+  transform:scale(1.05);
+}
+
+/* Form */
+input, textarea{
+  width:100%;
+  padding:10px;
+  border-radius:7px;
+  border:1px solid #bcdcff;
+  margin-top:5px;
+  margin-bottom:10px;
+  outline:none;
+  transition:.3s;
+}
+input:focus, textarea:focus{
+  border:1px solid #4aa3ff;
+  box-shadow:0 0 8px #4aa3ff;
+}
+
+/* Server IP Box */
+.ip-box{
+  background:#f4fbff;
+  border:2px dashed #4aa3ff;
+  padding:12px;
+  text-align:center;
+  font-size:18px;
+  border-radius:10px;
+  animation: float 3s infinite ease-in-out;
+}
+
+/* Footer */
+.footer{
+  text-align:center;
+  padding:15px;
+  margin-top:30px;
+  color:#333;
+  animation: fadeIn 2s;
+}
+
+/* Animations */
+@keyframes slideDown{
+ from{transform:translateY(-50px);opacity:0;}
+ to{transform:translateY(0);opacity:1;}
+}
+@keyframes fadeUp{
+ from{transform:translateY(40px);opacity:0;}
+ to{transform:translateY(0);opacity:1;}
+}
+@keyframes fadeIn{
+ from{opacity:0;}
+ to{opacity:1;}
+}
+@keyframes glow{
+ from{text-shadow:0 0 10px white;}
+ to{text-shadow:0 0 25px #dff6ff;}
+}
+@keyframes pulse{
+ 0%{transform:scale(1)}
+ 50%{transform:scale(1.07)}
+ 100%{transform:scale(1)}
+}
+@keyframes float{
+ 0%{transform:translateY(0)}
+ 50%{transform:translateY(-10px)}
+ 100%{transform:translateY(0)}
+}
+
+/* Scroll Animation */
+.fade-section{
+  opacity:0;
+  transform:translateY(50px);
+  transition:all .8s ease;
+}
+.fade-show{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>PARADISE ROLEPLAY</h1>
+  <p>The Ultimate Sri Lankan SA-MP Roleplay Experience</p>
+</div>
+
+<div class="container">
+
+<div class="section fade-section">
+<h2>🌴 Server Description</h2>
+<p>Paradise Roleplay is a realistic SA-MP Roleplay server designed for players who love serious, enjoyable and story-based roleplay. Join our community, create your character and live the best RP life!</p>
+
+<div class="ip-box">
+<b>SERVER IP :</b> 151.243.226.80:7777 <br>
+Status : <span id="serverStatus">Loading...</span><br>
+Players : <span id="playerCount">Loading...</span>
+</div>
+</div>
+
+<div class="section fade-section">
+<h2>📜 Basic RP Rules</h2>
+<ul>
+<li>No Deathmatching (DM)</li>
+<li>No Random Killing (RK)</li>
+<li>No Power Gaming (PG)</li>
+<li>No Meta Gaming (MG)</li>
+<li>Respect Staff & Players</li>
+<li>No Hacks / Cheats</li>
+<li>Proper Roleplay Always</li>
+</ul>
+</div>
+
+<div class="section fade-section">
+<h2>📝 Whitelist Application</h2>
+
+<label>Full Name</label>
+<input type="text" required>
+
+<label>Age</label>
+<input type="text" required>
+
+<label>Discord Username</label>
+<input type="text" required>
+
+<label>Roleplay Experience</label>
+<textarea rows="4" required></textarea>
+
+<label>Why do you want to join Paradise RP?</label>
+<textarea rows="4" required></textarea>
+
+<button>Submit Application</button>
+<p>(Admins will contact you via Discord / WhatsApp)</p>
+</div>
+
+<div class="section fade-section">
+<h2>🌐 Join Our Community</h2>
+<a class="link-btn" href="https://discord.gg/aGsPf4wJ8" target="_blank">Join Discord</a>
+<a class="link-btn" href="https://chat.whatsapp.com/BuAivI0znSIAt1fEN3adWU" target="_blank">Join WhatsApp</a>
+</div>
+
+</div>
+
+<div class="footer">
+© 2025 PARADISE ROLEPLAY | SA-MP
+</div>
+
+<script>
+// Scroll Animation
+const sections=document.querySelectorAll('.fade-section');
+function show(){
+sections.forEach(sec=>{
+ let pos=sec.getBoundingClientRect().top;
+ let screen=window.innerHeight-100;
+ if(pos<screen){
+ sec.classList.add("fade-show");
+ }
+});
+}
+window.addEventListener("scroll",show);
+show();
+
+
+// SA-MP SERVER STATUS + PLAYER COUNT
+const ip = "151.243.226.80";
+const port = "7777";
+
+async function loadSamp(){
+    const statusBox = document.getElementById("serverStatus");
+    const playerBox = document.getElementById("playerCount");
+
+    try{
+        const res = await fetch(`https://api.open.mp/server/${ip}/${port}`);
+        const data = await res.json();
+
+        if(data.online){
+            statusBox.innerHTML = `<b style="color:green">ONLINE</b>`;
+            playerBox.innerHTML = `${data.players.online} / ${data.players.max}`;
+        }else{
+            statusBox.innerHTML = `<b style="color:red">OFFLINE</b>`;
+            playerBox.innerHTML = `0 / 0`;
+        }
+    }catch(e){
+        statusBox.innerHTML = `<b style="color:gray">UNKNOWN</b>`;
+        playerBox.innerHTML = `-`;
+    }
+}
+
+// auto refresh every 10s
+loadSamp();
+setInterval(loadSamp,10000);
+</script>
+
+</body>
+</html>
