@@ -171,6 +171,7 @@ h2::after{
   transition:.3s;
   position:relative;
   overflow:hidden;
+  cursor:pointer;
 }
 .link-btn:hover{
   transform:translateY(-3px);
@@ -203,7 +204,7 @@ const loader = document.getElementById("loader");
 const bar = document.getElementById("barFill");
 const text = document.getElementById("progressText");
 
-const MIN_TIME = 10000; // <-- TIME CHANGE HERE (ms) e.g 5000 = 5s
+const MIN_TIME = 10000;
 const startTime = performance.now();
 
 let percent = 0;
@@ -225,6 +226,15 @@ window.addEventListener("load", () => {
     setTimeout(() => loader.style.display = "none", 600);
   }, remaining);
 });
+
+// COPY SERVER IP
+function copyIP(){
+  const ip = document.getElementById("serverIP").innerText;
+  navigator.clipboard.writeText(ip);
+  const msg = document.getElementById("copiedMsg");
+  msg.style.display = "block";
+  setTimeout(()=> msg.style.display="none",2000);
+}
 </script>
 
 <div class="header">
@@ -239,7 +249,10 @@ window.addEventListener("load", () => {
 <p>Welcome to <b>PARADISE ROLEPLAY</b> — Realistic Sri Lankan SA-MP Roleplay experience! Friendly community, active staff & pure RP vibes!</p>
 
 <div class="ip-box">
-<b>SERVER IP :</b> 151.243.226.80:7777
+<b>SERVER IP :</b> <span id="serverIP">151.243.226.80:7777</span>
+<br><br>
+<button class="link-btn" onclick="copyIP()">Copy Server IP</button>
+<p id="copiedMsg" style="display:none; color:green; margin-top:10px;">✔ Copied Successfully!</p>
 </div>
 </div>
 
@@ -257,12 +270,10 @@ window.addEventListener("load", () => {
 
 <div class="section">
 <h2>🌐 Join Our Community</h2>
-
 <div class="button-row">
 <a class="link-btn" href="https://discord.gg/aGsPf4wJ8" target="_blank">Join Discord</a>
 <a class="link-btn" href="https://chat.whatsapp.com/BuAivI0znSIAt1fEN3adWU" target="_blank">Join WhatsApp</a>
 </div>
-
 </div>
 
 <div class="section">
