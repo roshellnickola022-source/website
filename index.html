@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PARADISE ROLEPLAY</title>
+  <meta name="description" content="PARADISE ROLEPLAY — Futuristic tropical SA-MP roleplay" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#071026; --card:#0f1724; --muted:#9fb0d6; --text:#eaf6ff;
+      --primary:#00e0ff; --accent:#ff5aa2; --glass:rgba(255,255,255,0.04);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%; margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial; background:
+      radial-gradient(900px 400px at 10% 10%, rgba(0,224,255,0.06), transparent 20%),
+      radial-gradient(700px 350px at 90% 90%, rgba(255,90,150,0.04), transparent 20%), var(--bg);
+      color:var(--text); -webkit-font-smoothing:antialiased; scroll-behavior:smooth}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:20px}
+    header{position:sticky; top:0; z-index:60; backdrop-filter: blur(6px); background:linear-gradient(180deg, rgba(7,16,38,0.6), rgba(7,16,38,0.45)); border-bottom:1px solid rgba(255,255,255,0.03)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:0.6px}
+    .logo{width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--primary),var(--accent)); box-shadow:0 12px 40px rgba(0,224,255,0.12); transform:translateZ(0); animation:logoFloat 6s ease-in-out infinite}
+    @keyframes logoFloat{0%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(6deg)}100%{transform:translateY(0) rotate(0deg)}}
+    .menu{display:flex; gap:18px; align-items:center}
+    .menu a{color:var(--muted); font-weight:600; font-size:15px; position:relative}
+    .menu a::after{content:""; position:absolute; left:0; right:0; bottom:-8px; height:2px; background:linear-gradient(90deg,var(--primary),var(--accent)); transform:scaleX(0); transform-origin:left; transition:transform .28s ease}
+    .menu a:hover::after{transform:scaleX(1)}
+    .btn{padding:10px 14px; border-radius:12px; font-weight:700; display:inline-flex; gap:8px; align-items:center}
+    .btn-primary{background:linear-gradient(90deg,var(--primary),#7ef0ff); color:#00121a; box-shadow:0 12px 40px rgba(0,224,255,0.12); transform:translateZ(0); transition:transform .18s ease, box-shadow .18s ease}
+    .btn-primary:hover{transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,224,255,0.18)}
+    .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--text)}
+    .hamburger{display:none; width:44px; height:44px; align-items:center; justify-content:center; border-radius:10px; background:rgba(255,255,255,0.02)}
+    .hero{padding:72px 0 40px; text-align:center; position:relative; overflow:hidden}
+    /* animated gradient background in hero */
+    .hero::before{
+      content:""; position:absolute; inset:-20% -10% auto -10%; height:140%; background:linear-gradient(120deg, rgba(0,224,255,0.06), rgba(255,90,150,0.06), rgba(124,255,196,0.04)); filter:blur(60px); transform:translateX(-10%); animation:heroShift 12s linear infinite;
+    }
+    @keyframes heroShift{0%{transform:translateX(-10%)}50%{transform:translateX(10%)}100%{transform:translateX(-10%)}}
+    .hero h1{font-family:Montserrat,Inter; font-size:40px; margin:0; line-height:1.05; background:linear-gradient(90deg,#fff, #dffaff); -webkit-background-clip:text; background-clip:text; color:transparent; animation:fadeUp .8s ease both .1s}
+    .hero p{color:var(--muted); margin:14px auto 22px; max-width:760px; animation:fadeUp .8s ease both .2s}
+    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; animation:fadeUp .8s ease both .3s}
+    @keyframes fadeUp{from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)}}
+    .section{padding:48px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:18px; border:1px solid rgba(255,255,255,0.03); box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+    .grid{display:grid; gap:16px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .tag{display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; background:linear-gradient(90deg,var(--accent),#ff8fc0); color:#00121a; font-weight:700}
+    .rule{display:flex; gap:12px; align-items:flex-start}
+    .rule .num{min-width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; background:linear-gradient(90deg,var(--primary),var(--accent)); color:#00121a; font-weight:800}
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+    .gallery img{width:100%; height:160px; object-fit:cover; border-radius:12px; transition:transform .36s cubic-bezier(.2,.9,.3,1), box-shadow .36s; transform-origin:center; will-change:transform}
+    .gallery img:hover{transform:translateY(-10px) scale(1.03); box-shadow:0 30px 60px rgba(0,0,0,0.6)}
+    /* subtle parallax on scroll for gallery images */
+    .parallax{transform:translateY(0); transition:transform .2s linear}
+    .status{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+    .pill{padding:8px 12px; border-radius:999px; background:rgba(124,255,196,0.08); color:var(--accent); border:1px solid rgba(124,255,196,0.18); font-weight:700; display:inline-flex; gap:8px; align-items:center}
+    .pulse{display:inline-block; width:10px; height:10px; border-radius:999px; background:var(--accent); box-shadow:0 0 0 rgba(124,255,196,0.4); animation:ping 1.8s infinite}
+    @keyframes ping{0%{box-shadow:0 0 0 0 rgba(124,255,196,0.28)}70%{box-shadow:0 0 0 10px rgba(124,255,196,0)}100%{box-shadow:0 0 0 0 rgba(124,255,196,0)}}
+    footer{padding:28px 0; color:var(--muted); border-top:1px solid rgba(255,255,255,0.03); text-align:center}
+    /* responsive */
+    @media (max-width:980px){
+      .grid-3{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+      .menu{display:none}
+      .hamburger{display:flex}
+    }
+    @media (max-width:640px){
+      .grid-3,.grid-2{grid-template-columns:1fr}
+      .hero h1{font-size:28px}
+      .hero{padding:40px 0}
+      .gallery img{height:140px}
+    }
+    /* focus */
+    a:focus, button:focus {outline:3px solid rgba(0,224,255,0.12); outline-offset:3px; border-radius:8px}
+    /* small animated underline for headings */
+    h2{position:relative}
+    h2::after{content:""; position:absolute; left:0; bottom:-8px; width:48px; height:4px; border-radius:4px; background:linear-gradient(90deg,var(--primary),var(--accent)); transform:scaleX(0); transform-origin:left; transition:transform .36s ease}
+    h2.visible::after{transform:scaleX(1)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:13px;color:var(--muted)">Community</div>
+          <div style="font-size:16px">PARADISE ROLEPLAY</div>
+        </div>
+      </div>
+
+      <nav class="menu" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#rules">Rules</a>
+        <a href="#join">Join</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#community">Community</a>
+      </nav>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="btn btn-primary" href="https://discord.gg/your-invite" target="_blank" rel="noopener">Join Discord</a>
+        <button class="hamburger" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="18" height="2" rx="1" fill="white"/><rect y="5" width="18" height="2" rx="1" fill="white" opacity="0.8"/><rect y="10" width="18" height="2" rx="1" fill="white" opacity="0.6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- mobile menu -->
+    <div id="mobileMenu" style="display:none; padding:12px 20px; border-top:1px solid rgba(255,255,255,0.02); background:linear-gradient(180deg, rgba(7,16,38,0.6), rgba(7,16,38,0.55))">
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:420px;margin:0 auto">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#rules">Rules</a>
+        <a href="#join">Join</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#community">Community</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <section class="hero">
+      <span class="tag" style="display:inline-block;margin-bottom:12px">Futuristic SA-MP RP</span>
+      <h1>Paradise energy. Futuristic roleplay. High-quality experience.</h1>
+      <p>Step into a neon-tropical city with deep roleplay systems. Build your story—law, crime, civilian life, and more.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://discord.gg/your-invite" target="_blank" rel="noopener">Join Discord</a>
+        <a class="btn btn-ghost" href="#join">Apply Whitelist</a>
+        <a class="btn btn-ghost" href="https://chat.whatsapp.com/your-link" target="_blank" rel="noopener">Join WhatsApp</a>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About Paradise</h2>
+      <div class="card" style="margin-top:12px; animation:fadeUp .6s ease both .1s">
+        <p style="margin:0;color:var(--muted)">Paradise Roleplay blends classic SA-MP roleplay with a futuristic–tropical aesthetic. Whether you enforce the law, build an empire, or live a chill civilian life—your story matters.</p>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:16px">
+        <div class="card" style="animation:fadeUp .6s ease both .15s"><strong>Police RP</strong><p style="color:var(--muted);margin:8px 0 0">Enforce the law with realistic procedures and teamwork.</p></div>
+        <div class="card" style="animation:fadeUp .6s ease both .2s"><strong>Gang RP</strong><p style="color:var(--muted);margin:8px 0 0">Rise through the ranks—territory, deals, and strategy.</p></div>
+        <div class="card" style="animation:fadeUp .6s ease both .25s"><strong>Civilian RP</strong><p style="color:var(--muted);margin:8px 0 0">Own businesses, socialize, and craft your daily life.</p></div>
+      </div>
+    </section>
+
+    <section id="rules" class="section">
+      <h2>Rules</h2>
+      <div class="grid grid-2" style="margin-top:12px">
+        <div class="card rule" style="animation:fadeUp .6s ease both .12s"><div class="num">1</div><div><strong>Respect all players</strong><div style="color:var(--muted);margin-top:6px">No harassment, discrimination, or toxic behavior.</div></div></div>
+        <div class="card rule" style="animation:fadeUp .6s ease both .16s"><div class="num">2</div><div><strong>No powergaming</strong><div style="color:var(--muted);margin-top:6px">Keep actions realistic; don’t use OOC info IC.</div></div></div>
+        <div class="card rule" style="animation:fadeUp .6s ease both .20s"><div class="num">3</div><div><strong>Stay in character</strong><div style="color:var(--muted);margin-top:6px">Maintain immersion during scenarios.</div></div></div>
+        <div class="card rule" style="animation:fadeUp .6s ease both .24s"><div class="num">4</div><div><strong>No RDM or VDM</strong><div style="color:var(--muted);margin-top:6px">Hostile actions need proper RP justification.</div></div></div>
+      </div>
+    </section>
+
+    <section id="join" class="section">
+      <h2>Join Paradise</h2>
+      <div class="card status" style="align-items:center;justify-content:space-between;margin-top:12px">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <span class="pill" id="serverStatus"><span class="pulse" aria-hidden="true"></span> Server Status: <strong style="margin-left:6px;color:var(--text)">Checking...</strong></span>
+          <span class="pill" id="playerCount">Players: — / —</span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="https://forms.gle/your-whitelist-form" target="_blank" rel="noopener">Start Whitelist</a>
+          <a class="btn btn-ghost" href="https://discord.gg/your-invite" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+      <p style="color:var(--muted);margin-top:10px;font-size:14px">Note: live player count requires a backend API at <code style="background:rgba(255,255,255,0.02);padding:2px 6px;border-radius:6px">/status</code> that returns JSON { players, maxplayers, online }.</p>
+    </section>
+
+    <section id="gallery" class="section">
+      <h2>Gallery</h2>
+      <div class="gallery card" style="padding:12px; margin-top:12px">
+        <img class="parallax" src="images/city-1.webp" alt="Paradise skyline">
+        <img class="parallax" src="images/police-chase.webp" alt="Police chase">
+        <img class="parallax" src="images/night-life.webp" alt="Night life">
+        <img class="parallax" src="images/business-district.webp" alt="Business district">
+        <img class="parallax" src="images/heli-view.webp" alt="Helicopter view">
+        <img class="parallax" src="images/beach-neon.webp" alt="Neon beach">
+      </div>
+    </section>
+
+    <section id="community" class="section">
+      <h2>Community</h2>
+      <div class="grid grid-3" style="margin-top:12px">
+        <a class="card" href="https://discord.gg/your-invite" target="_blank" rel="noopener"><strong>Discord</strong><div style="color:var(--muted);margin-top:6px">Announcements & support</div></a>
+        <a class="card" href="https://tiktok.com/@your-handle" target="_blank" rel="noopener"><strong>TikTok</strong><div style="color:var(--muted);margin-top:6px">Short clips & highlights</div></a>
+        <a class="card" href="https://youtube.com/@your-channel" target="_blank" rel="noopener"><strong>YouTube</strong><div style="color:var(--muted);margin-top:6px">Cinematics & guides</div></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2025 PARADISE ROLEPLAY • Designed by Paradise Team
+    </div>
+  </footer>
+
+  <script>
+    // mobile menu toggle
+    const toggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => {
+      const open = mobileMenu.style.display === 'block';
+      mobileMenu.style.display = open ? 'none' : 'block';
+      toggle.setAttribute('aria-expanded', String(!open));
+    });
+
+    // animate headings underline when visible
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, {threshold: 0.2});
+    document.querySelectorAll('h2').forEach(h => io.observe(h));
+
+    // parallax effect for gallery images (subtle)
+    const parallaxEls = document.querySelectorAll('.parallax');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      parallaxEls.forEach((el, i) => {
+        const speed = 0.06 + (i % 3) * 0.02;
+        el.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    }, {passive:true});
+
+    // fetch server status from /status and animate pulse
+    async function updateStatus(){
+      try{
+        const res = await fetch('/status', {cache: 'no-store'});
+        if(!res.ok) throw new Error('no api');
+        const json = await res.json();
+        const players = json.players ?? '—';
+        const max = json.maxplayers ?? '—';
+        const online = json.online ?? true;
+        document.getElementById('playerCount').textContent = `Players: ${players} / ${max}`;
+        document.getElementById('serverStatus').innerHTML = `<span class="pulse" aria-hidden="true"></span> Server Status: <strong style="margin-left:6px;color:var(--text)">${online ? 'ONLINE' : 'OFFLINE'}</strong>`;
+        // small bounce when count changes
+        const pill = document.getElementById('playerCount');
+        pill.animate([{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}], {duration:420, easing:'cubic-bezier(.2,.9,.3,1)'});
+      }catch(e){
+        document.getElementById('playerCount').textContent = 'Players: — / —';
+        document.getElementById('serverStatus').innerHTML = `<span style="width:10px;height:10px;border-radius:999px;background:#ff6b6b;display:inline-block;margin-right:8px"></span> Server Status: <strong style="margin-left:6px;color:var(--text)">OFFLINE</strong>`;
+      }
+    }
+    updateStatus();
+    setInterval(updateStatus, 20000);
+
+    // small entrance animations for images (stagger)
+    document.querySelectorAll('.gallery img').forEach((img, idx) => {
+      img.style.opacity = 0;
+      setTimeout(()=>{ img.style.transition = 'opacity .6s ease, transform .6s ease'; img.style.opacity = 1; }, 120 * idx);
+    });
+  </script>
+</body>
+</html>
