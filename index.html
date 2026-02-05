@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-
 *{
   box-sizing:border-box;
   font-family: Arial;
@@ -105,6 +104,7 @@ body{
   box-shadow:0 15px 40px rgba(0,0,0,.15);
   animation:fadeUp 1.2s;
 }
+
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(40px)}
   to{opacity:1;transform:translateY(0)}
@@ -169,13 +169,20 @@ h2::after{
   text-decoration:none;
   font-weight:bold;
   transition:.3s;
-  position:relative;
-  overflow:hidden;
   cursor:pointer;
 }
 .link-btn:hover{
   transform:translateY(-3px);
   background:#0b5ed6;
+}
+
+/* Server Status iframe */
+.status-box{
+  width:100%;
+  height:420px;
+  border:none;
+  border-radius:14px;
+  box-shadow:0 0 18px rgba(0,0,0,.15);
 }
 
 /* Footer */
@@ -186,7 +193,6 @@ h2::after{
   color:#333;
   font-size:14px;
 }
-
 </style>
 </head>
 
@@ -227,13 +233,13 @@ window.addEventListener("load", () => {
   }, remaining);
 });
 
-// COPY SERVER IP
 function copyIP(){
   const ip = document.getElementById("serverIP").innerText;
   navigator.clipboard.writeText(ip);
-  const msg = document.getElementById("copiedMsg");
-  msg.style.display = "block";
-  setTimeout(()=> msg.style.display="none",2000);
+  document.getElementById("copiedMsg").style.display="block";
+  setTimeout(()=> {
+    document.getElementById("copiedMsg").style.display="none";
+  },2000);
 }
 </script>
 
@@ -246,7 +252,7 @@ function copyIP(){
 
 <div class="section">
 <h2>🌴 Server Description</h2>
-<p>Welcome to <b>UDARATA ROLEPLAY</b> — Realistic Sri Lankan SA-MP Roleplay experience! Friendly community, active staff & pure RP vibes!</p>
+<p>Welcome to <b>UDARATA ROLEPLAY</b> — Realistic Sri Lankan SA-MP Roleplay experience! Friendly community & active staff.</p>
 
 <div class="ip-box">
 <b>SERVER IP :</b> <span id="serverIP">151.243.226.80:7777</span>
@@ -254,6 +260,17 @@ function copyIP(){
 <button class="link-btn" onclick="copyIP()">Copy Server IP</button>
 <p id="copiedMsg" style="display:none; color:green; margin-top:10px;">✔ Copied Successfully!</p>
 </div>
+</div>
+
+<div class="section">
+<h2>📡 Server Status</h2>
+<p>Live UDARATA ROLEPLAY server status.</p>
+
+<iframe 
+  src="https://www.gs4u.net/en/s/414264.html"
+  class="status-box"
+  loading="lazy">
+</iframe>
 </div>
 
 <div class="section">
@@ -278,12 +295,10 @@ function copyIP(){
 
 <div class="section">
 <h2>✔️ Whitelist Registration</h2>
-<p>Server එකට join කරන්න Whitelist අනිවාර්යයි. Button එක Click කර Submit කරන්න.</p>
-
+<p>Server එකට join කරන්න Whitelist අනිවාර්යයි.</p>
 <div class="button-row">
 <a class="link-btn" href="https://forms.gle/TKvWRpJ2zQqBm7Vz6" target="_blank">Go To Whitelist Form</a>
 </div>
-
 </div>
 
 </div>
